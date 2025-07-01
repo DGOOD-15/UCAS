@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import staticVideo from "../../assets/static.webm";
 import "./Media.css";
 
 function Media() {
@@ -80,7 +79,7 @@ function Media() {
   return (
     <div className="main__media-container">
       <video autoPlay loop muted playsInline className="tv-static-bg">
-        <source src={staticVideo} type="video/webm" />
+        <source src="/static.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
