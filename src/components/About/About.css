@@ -1,0 +1,29 @@
+.about {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  background: linear-gradient(to bottom, #b0b0b0 0%, #4a4a4a 100%);
+}
+
+.about__title {
+  font-size: 60px;
+  color: rgb(44, 195, 20);
+  position: absolute;
+  left: 60px;
+  top: 100px;
+}
+
+.about__description {
+  font-size: 35px;
+  color: rgb(148, 187, 145);
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  width: 75%;
+  margin: 0 auto;
+  padding: 10px 10px;
+}

@@ -1,0 +1,23 @@
+.landing-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/Web_Photo_Editor.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.landing-page__logo {
+  background-image: url(../../assets/landing-page-logo.png);
+  height: 200px;
+  width: 1000px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

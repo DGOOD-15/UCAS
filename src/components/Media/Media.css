@@ -1,0 +1,135 @@
+.main__media-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Fill entire screen */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-description {
+  font-size: 60px;
+  text-align: center;
+  color: #000000;
+}
+
+.tv-static-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.media-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+  background: #222;
+  width: 80%;
+  height: 80vh;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9;
+  z-index: 2; /* Maintain aspect ratio */
+}
+
+.media-frame {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Now height follows the aspect-ratio */
+  background: #333;
+  border: 12px solid #555;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), inset 0 0 10px #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-screen {
+  width: 85%;
+  height: 75%;
+  background: black;
+  border: 6px inset #000;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: inset 0 0 12px rgba(0, 255, 255, 0.3);
+  position: relative;
+}
+
+.media-screen iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.media-knobs {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.media-knob,
+.media-knob-small {
+  background: radial-gradient(circle, #666 0%, #222 100%);
+  border-radius: 50%;
+  border: 3px solid #111;
+  box-shadow: inset 0 0 5px #000;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.media-knob {
+  width: 60px;
+  height: 60px;
+}
+
+.media-knob-small {
+  width: 25px;
+  height: 25px;
+}
+
+.media-knob.on {
+  background: radial-gradient(circle at center, #6aff6a 0%, #2bb32b 70%);
+  box-shadow: 0 0 12px #6aff6a, inset 0 0 10px #2bb32b, 0 0 20px #2bb32b;
+  animation: flicker 1.5s infinite alternate;
+}
+
+.media-knob-small.on {
+  background: radial-gradient(circle at center, #6aff6a 0%, #2bb32b 70%);
+  box-shadow: 0 0 8px #6aff6a, inset 0 0 6px #2bb32b;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.media-screen::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}

@@ -1,0 +1,38 @@
+.footer {
+  width: 100%;
+  height: 93px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-image: url(../../assets/clouds.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top: 1px solid #101320;
+}
+
+.footer__logo {
+  background-image: url(../../assets/footer-logo.png);
+  width: 100px;
+  height: 90px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer__links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__links-mobile {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-auto-rows: auto;
+  gap: 10px;
+}
+
+.footer__icons {
+  width: 30px;
+  height: 30px;
+}

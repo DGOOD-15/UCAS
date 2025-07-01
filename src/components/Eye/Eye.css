@@ -1,0 +1,69 @@
+.eye-container {
+  width: 220px;
+  height: 240px;
+  margin: 40px auto;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.eye {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #f2f2f2 60%, #d0d0d0 100%);
+  border-radius: 50%;
+  border: 6px solid black;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.iris {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #000000 12%, transparent 13%),
+    radial-gradient(circle at center, #1a75ff 30%, #003366 70%, #000 100%),
+    repeating-conic-gradient(from 0deg, #1a75ff 0deg 2deg, #003366 2deg 4deg);
+  background-blend-mode: overlay;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.pupil {
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.eye-shine {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(1.5px);
+  pointer-events: none;
+}
+
+.enter-label {
+  font-family: monospace;
+  font-size: 14px;
+  color: #000;
+  margin-top: 10px;
+}

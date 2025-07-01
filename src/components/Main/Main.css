@@ -1,0 +1,20 @@
+.main {
+  width: 100%;
+  padding: 0;
+}
+
+/* Responsive background image section */
+.main__bg-image {
+  aspect-ratio: 16 / 9; /* 16:9 ratio */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+/* Responsive tweaks for mobile/tablet */
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 875px) {
+}
