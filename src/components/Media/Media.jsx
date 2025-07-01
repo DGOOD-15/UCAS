@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Media.css";
-
+import staticBG from "../../assets/static.mp4";
 function Media() {
   const playerRef = useRef(null); // div container for YT player
   const ytPlayerInstance = useRef(null); // store YouTube Player object
@@ -79,7 +79,7 @@ function Media() {
   return (
     <div className="main__media-container">
       <video autoPlay loop muted playsInline className="tv-static-bg">
-        <source src="/static.webm" type="video/webm" />
+        <source src={staticBG} type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
