@@ -22,14 +22,14 @@ function App() {
       ) : (
         <>
           <Header />
-
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/media" element={<Media />} />
-            <Route path="/store" element={<Store />} />
-          </Routes>
-
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/media" element={<Media />} />
+              <Route path="/store" element={<Store />} />
+            </Routes>
+          </main>
           <Footer />
         </>
       )}

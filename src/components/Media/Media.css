@@ -1,20 +1,18 @@
+/* Container for entire media section */
 .main__media-container {
   position: relative;
   width: 100%;
-  height: 100%; /* Fill entire screen */
+  min-height: 100vh; /* full viewport height */
   overflow: hidden;
   display: flex;
+  flex-direction: column; /* stack description above media player */
   align-items: center;
   justify-content: center;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
-.media-description {
-  font-size: 60px;
-  text-align: center;
-  color: #000000;
-  margin-top: 20px;
-}
-
+/* Background static video */
 .tv-static-bg {
   position: absolute;
   top: 0;
@@ -27,23 +25,37 @@
   pointer-events: none;
 }
 
+/* Description text above the media */
+.media-description {
+  font-size: 60px;
+  text-align: center;
+  color: #000000;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+/* Media wrapper with responsive width and aspect ratio */
 .media-wrapper {
+  width: 80%;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9; /* maintain 16:9 ratio */
+  margin: 50px auto;
+  background: #222;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px auto;
-  background: #222;
-  width: 80%;
-  height: 80vh;
-  max-width: 1200px;
-  aspect-ratio: 16 / 9;
-  z-index: 2; /* Maintain aspect ratio */
+  z-index: 2;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 12px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), inset 0 0 10px #111;
 }
 
+/* Frame around the media screen */
 .media-frame {
   position: relative;
   width: 100%;
-  height: 100%; /* Now height follows the aspect-ratio */
+  height: 100%; /* follow aspect ratio height */
   background: #333;
   border: 12px solid #555;
   border-radius: 20px;
@@ -52,8 +64,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
+/* The actual media screen (YouTube iframe container) */
 .media-screen {
   width: 85%;
   height: 75%;
@@ -65,20 +79,24 @@
   position: relative;
 }
 
+/* YouTube iframe fills the screen */
 .media-screen iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
 
+/* Knobs container */
 .media-knobs {
   position: absolute;
   bottom: 30px;
   right: 30px;
   display: flex;
   gap: 15px;
+  cursor: pointer;
 }
 
+/* Knob base styles */
 .media-knob,
 .media-knob-small {
   background: radial-gradient(circle, #666 0%, #222 100%);
@@ -88,16 +106,19 @@
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+/* Large knob */
 .media-knob {
   width: 60px;
   height: 60px;
 }
 
+/* Small knob */
 .media-knob-small {
   width: 25px;
   height: 25px;
 }
 
+/* Knob ON state glowing animation */
 .media-knob.on {
   background: radial-gradient(circle at center, #6aff6a 0%, #2bb32b 70%);
   box-shadow: 0 0 12px #6aff6a, inset 0 0 10px #2bb32b, 0 0 20px #2bb32b;
@@ -110,6 +131,7 @@
   animation: flicker 1.5s infinite alternate;
 }
 
+/* Static scan lines effect overlay */
 .media-screen::before {
   content: "";
   position: absolute;
@@ -123,4 +145,83 @@
     transparent 1px,
     transparent 3px
   );
+}
+
+/* Flicker animation */
+@keyframes flicker {
+  0% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Media Queries */
+
+/* Tablets and smaller laptops */
+@media screen and (max-width: 1024px) {
+  .media-wrapper {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .media-description {
+    font-size: 40px;
+  }
+}
+
+/* Tablets and large phones */
+@media screen and (max-width: 768px) {
+  .media-wrapper {
+    width: 95%;
+    margin: 20px auto;
+    padding: 8px;
+  }
+
+  .media-description {
+    font-size: 30px;
+    margin-top: 15px;
+  }
+
+  .media-screen {
+    width: 90%;
+    height: 70%;
+  }
+}
+
+/* Phones */
+@media screen and (max-width: 480px) {
+  .media-wrapper {
+    width: 100%;
+    margin: 15px auto;
+    padding: 6px;
+    border-width: 8px;
+  }
+
+  .media-description {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  .media-screen {
+    width: 95%;
+    height: 65%;
+  }
+
+  .media-knob {
+    width: 40px;
+    height: 40px;
+  }
+
+  .media-knob-small {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Adjust knobs position to avoid overflow on small screens */
+  .media-knobs {
+    bottom: 15px;
+    right: 15px;
+  }
 }

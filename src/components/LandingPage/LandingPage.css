@@ -21,3 +21,94 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.landing-page__button {
+  /* in scss with just one variable i can change opacity with rgba(variable, opacity) but in css it's not possible so i have used three seperate variables */
+  /* with hue-rotate color can be changed */
+  --main-color: rgb(46, 213, 115);
+  --main-bg-color: rgba(46, 213, 116, 0.36);
+  --pattern-color: rgba(46, 213, 116, 0.073);
+
+  /* change this rotation value */
+  filter: hue-rotate(0deg);
+
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  background: radial-gradient(
+      circle,
+      var(--main-bg-color) 0%,
+      rgba(0, 0, 0, 0) 95%
+    ),
+    linear-gradient(var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+  background-size: cover, 15px 15px, 15px 15px;
+  background-position: center center, center center, center center;
+  border-image: radial-gradient(
+      circle,
+      var(--main-color) 0%,
+      rgba(0, 0, 0, 0) 100%
+    )
+    1;
+  border-width: 1px 0 1px 0;
+  color: var(--main-color);
+  padding: 1rem 3rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transition: background-size 0.2s ease-in-out;
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+}
+
+.landing-page__button:hover {
+  background-size: cover, 10px 10px, 10px 10px;
+}
+.landing-page__button:active {
+  filter: hue-rotate(250deg);
+}
+@media screen and (max-width: 1000px) {
+  .landing-page__logo {
+    width: 70%;
+    max-width: 600px;
+    background-size: contain;
+  }
+
+  .landing-page__button {
+    width: auto;
+    font-size: 1.25rem;
+    padding: 0.8rem 2rem;
+    right: 30px;
+    bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .landing-page__logo {
+    width: 80%;
+    max-width: 500px;
+  }
+
+  .landing-page__button {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.8rem;
+    right: 20px;
+    bottom: 20px;
+    letter-spacing: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .landing-page__logo {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .landing-page__button {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+    right: 10px;
+    bottom: 10px;
+    letter-spacing: 0.2rem;
+  }
+}
