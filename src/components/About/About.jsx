@@ -1,4 +1,3 @@
-import Ufo from "../Ufo/Ufo";
 import "./About.css";
 function About() {
   return (
@@ -20,7 +19,6 @@ function About() {
         gritty side to the melancholy once the volumes were turned up. New album
         “Artificial Air” out now!
       </p>
-      <Ufo></Ufo>
     </section>
   );
 }

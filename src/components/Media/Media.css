@@ -10,6 +10,7 @@
   justify-content: center;
   padding: 20px 0;
   box-sizing: border-box;
+  margin-bottom: 80px;
 }
 
 /* Background static video */
@@ -89,8 +90,8 @@
 /* Knobs container */
 .media-knobs {
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 10px;
+  right: 20px;
   display: flex;
   gap: 15px;
   cursor: pointer;
@@ -146,6 +147,24 @@
     transparent 3px
   );
 }
+
+.fullscreen-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.fullscreen-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
 
 /* Flicker animation */
 @keyframes flicker {

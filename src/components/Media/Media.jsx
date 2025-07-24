@@ -1,27 +1,29 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Media.css";
 import staticBG from "../../assets/static.mp4";
+
 function Media() {
-  const playerRef = useRef(null); // div container for YT player
-  const ytPlayerInstance = useRef(null); // store YouTube Player object
+  const playerRef = useRef(null);
+  const ytPlayerInstance = useRef(null);
+  const mediaFrameRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Load YouTube Iframe API once
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(
+    navigator.userAgent
+  );
+
   useEffect(() => {
     if (window.YT && window.YT.Player) {
       initializePlayer();
     } else {
-      // Dynamically load YouTube iframe API script
       const tag = document.createElement("script");
       tag.src = "https://www.youtube.com/iframe_api";
       tag.async = true;
       document.body.appendChild(tag);
-
-      // API calls this function when script loads
       window.onYouTubeIframeAPIReady = initializePlayer;
     }
 
-    // Cleanup function to remove player on unmount
     return () => {
       if (ytPlayerInstance.current) {
         ytPlayerInstance.current.destroy();
@@ -30,25 +32,22 @@ function Media() {
     };
   }, []);
 
-  // Initialize YouTube player
   const initializePlayer = () => {
     if (playerRef.current && !ytPlayerInstance.current) {
       ytPlayerInstance.current = new window.YT.Player(playerRef.current, {
-        videoId: "puzvgHlI0iQ", // <-- Your YouTube Video ID here
-        events: {
-          onStateChange: onPlayerStateChange,
-        },
+        videoId: "puzvgHlI0iQ",
+        events: { onStateChange },
         playerVars: {
           modestbranding: 1,
           rel: 0,
           showinfo: 0,
+          fs: 1, // Show YouTube fullscreen button
         },
       });
     }
   };
 
-  // Track playing state to toggle knob glow
-  const onPlayerStateChange = (event) => {
+  const onStateChange = (event) => {
     const YT = window.YT;
     if (event.data === YT.PlayerState.PLAYING) {
       setIsPlaying(true);
@@ -61,7 +60,6 @@ function Media() {
     }
   };
 
-  // Toggle play/pause when knob clicked
   const togglePlay = () => {
     const player = ytPlayerInstance.current;
     if (!player) return;
@@ -73,6 +71,17 @@ function Media() {
       player.pauseVideo();
     } else {
       player.playVideo();
+    }
+  };
+
+  const toggleFullScreen = () => {
+    const element = mediaFrameRef.current;
+    if (!document.fullscreenElement) {
+      element.requestFullscreen().catch((err) => {
+        console.error("Fullscreen error:", err);
+      });
+    } else {
+      document.exitFullscreen();
     }
   };
 
@@ -88,10 +97,10 @@ function Media() {
           New music coming soon! While you wait check out our latest music
           video!
         </p>
+
         <div className="media-wrapper">
-          <div className="media-frame">
+          <div className="media-frame" ref={mediaFrameRef}>
             <div className="media-screen">
-              {/* This div is replaced by the YouTube iframe */}
               <div
                 id="youtube-player"
                 ref={playerRef}
@@ -99,7 +108,6 @@ function Media() {
               />
             </div>
 
-            {/* Knobs: clickable to toggle play/pause */}
             <div
               className="media-knobs"
               onClick={togglePlay}
@@ -111,6 +119,17 @@ function Media() {
             >
               <div className={`media-knob ${isPlaying ? "on" : ""}`}></div>
             </div>
+
+            {/* ✅ Show custom fullscreen only on mobile & not iOS */}
+            {isMobile && !isIOS && (
+              <button
+                className="fullscreen-btn"
+                onClick={toggleFullScreen}
+                title="Toggle Fullscreen"
+              >
+                ⛶
+              </button>
+            )}
           </div>
         </div>
       </div>

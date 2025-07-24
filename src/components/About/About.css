@@ -1,6 +1,5 @@
 .about {
   width: 100%;
-  /* height: 100vh;  remove this */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -29,8 +28,9 @@
   border-radius: 20px;
   width: 75%;
   margin: 0 auto;
+  margin-bottom: 220px;
   padding: 10px 10px;
-  max-width: 600px;
+  max-width: 1200px;
 }
 
 @media screen and (max-width: 820px) {
