@@ -166,81 +166,82 @@
 .fullscreen-btn:hover {
   background: rgba(255, 255, 255, 0.2);
 
-/* Flicker animation */
-@keyframes flicker {
-  0% {
-    opacity: 0.85;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Media Queries */
-
-/* Tablets and smaller laptops */
-@media screen and (max-width: 1024px) {
-  .media-wrapper {
-    width: 90%;
-    margin: 30px auto;
+  /* Flicker animation */
+  @keyframes flicker {
+    0% {
+      opacity: 0.85;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
-  .media-description {
-    font-size: 40px;
-  }
-}
+  /* Media Queries */
 
-/* Tablets and large phones */
-@media screen and (max-width: 768px) {
-  .media-wrapper {
-    width: 95%;
-    margin: 20px auto;
-    padding: 8px;
-  }
+  /* Tablets and smaller laptops */
+  @media screen and (max-width: 1024px) {
+    .media-wrapper {
+      width: 90%;
+      margin: 30px auto;
+    }
 
-  .media-description {
-    font-size: 30px;
-    margin-top: 15px;
+    .media-description {
+      font-size: 40px;
+    }
   }
 
-  .media-screen {
-    width: 90%;
-    height: 70%;
-  }
-}
+  /* Tablets and large phones */
+  @media screen and (max-width: 768px) {
+    .media-wrapper {
+      width: 95%;
+      margin: 20px auto;
+      padding: 8px;
+    }
 
-/* Phones */
-@media screen and (max-width: 480px) {
-  .media-wrapper {
-    width: 100%;
-    margin: 15px auto;
-    padding: 6px;
-    border-width: 8px;
-  }
+    .media-description {
+      font-size: 30px;
+      margin-top: 15px;
+    }
 
-  .media-description {
-    font-size: 22px;
-    margin-top: 10px;
-  }
-
-  .media-screen {
-    width: 95%;
-    height: 65%;
+    .media-screen {
+      width: 90%;
+      height: 70%;
+    }
   }
 
-  .media-knob {
-    width: 40px;
-    height: 40px;
-  }
+  /* Phones */
+  @media screen and (max-width: 480px) {
+    .media-wrapper {
+      width: 100%;
+      margin: 15px auto;
+      padding: 6px;
+      border-width: 8px;
+    }
 
-  .media-knob-small {
-    width: 18px;
-    height: 18px;
-  }
+    .media-description {
+      font-size: 22px;
+      margin-top: 10px;
+    }
 
-  /* Adjust knobs position to avoid overflow on small screens */
-  .media-knobs {
-    bottom: 15px;
-    right: 15px;
+    .media-screen {
+      width: 95%;
+      height: 65%;
+    }
+
+    .media-knob {
+      width: 40px;
+      height: 40px;
+    }
+
+    .media-knob-small {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Adjust knobs position to avoid overflow on small screens */
+    .media-knobs {
+      bottom: 15px;
+      right: 15px;
+    }
   }
 }
