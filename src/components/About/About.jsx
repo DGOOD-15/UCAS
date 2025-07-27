@@ -8,7 +8,7 @@ function About() {
   const bandMembers = [
     {
       name: "Aaron Jackson Sholar",
-      role: "Guiatar / Vocals",
+      role: "Guitar / Vocals",
       image: AJ,
       instagram: "https://www.instagram.com/jax_son35/",
     },
