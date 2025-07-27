@@ -1,3 +1,17 @@
 .store {
-  height: 100vh;
+  height: 1500px;
+  background-color: black;
+  background-image: url("../../assets/tshirt.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.store__title {
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14, 0 0 16px #39ff14;
+  font-size: 60px;
+  font-family: "Share Tech Mono", monospace;
 }

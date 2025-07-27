@@ -1,0 +1,66 @@
+.band-member-card {
+  background: rgba(0, 0, 0, 0.75);
+  border: 1 px solid #39ff14;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  margin: 15px;
+  text-align: center;
+  font-family: "Share Tech Mono", monospace;
+  box-shadow: 0 0 8px #39ff14;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.band-member-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px #39ff14;
+}
+
+.band-member-card__img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.5) brightness(0.9) sepia(1) hue-rotate(75deg)
+    saturate(5);
+  box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.band-member-card__content h3 {
+  font-size: 1.1rem;
+  color: #39ff14;
+  margin-bottom: 4px;
+}
+
+.band-member-card__content p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 8px;
+}
+
+.band-member-card__content ul {
+  list-style: none;
+  padding: 0;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.band-member-card__social {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #39ff14;
+  text-decoration: none;
+  border: 1px solid #39ff14;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.band-member-card__social:hover {
+  background: #39ff14;
+  color: #000;
+}
