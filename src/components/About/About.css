@@ -11,10 +11,10 @@
   flex-grow: 1;
   font-family: "Orbitron", sans-serif;
   color: #00ff7f;
-  text-shadow:
-    0 0 5px #39ff14,
-    0 0 10px #39ff14;
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
   background-color: rgb(0, 0, 0);
+  background-image: url(../../assets/concrete-wall-texture.jpg);
+  background-size: cover;
 }
 
 .about__title {
@@ -73,9 +73,7 @@ body::after {
 
 @media screen and (max-width: 480px) {
   .about {
-    text-shadow:
-      0 0 2px #39ff14,
-      0 0 4px #39ff14;
+    text-shadow: 0 0 2px #39ff14, 0 0 4px #39ff14;
   }
 
   .about__title {

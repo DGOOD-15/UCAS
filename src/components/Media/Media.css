@@ -1,247 +1,141 @@
-/* Container for entire media section */
-.main__media-container {
+/* CSS Variables for easy theming */
+:root {
+  --background-color: #0a0a0a;
+  --text-color: #e0e0e0;
+  --accent-color: #00bcd4;
+  --btn-bg: rgba(0, 188, 212, 0.15);
+  --btn-hover-bg: rgba(0, 188, 212, 0.3);
+  --btn-color: #00bcd4;
+  --btn-border-radius: 8px;
+  --font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Reset and base styles */
+.media-section {
   position: relative;
-  width: 100%;
-  min-height: 100vh; /* full viewport height */
-  overflow: hidden;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
   display: flex;
-  flex-direction: column; /* stack description above media player */
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px 0;
-  box-sizing: border-box;
-  margin-bottom: 80px;
+  padding: 3rem 1rem;
+  overflow: hidden;
 }
 
 /* Background static video */
-.tv-static-bg {
-  position: absolute;
+.media-background {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
+  opacity: 0.1;
   z-index: 0;
   pointer-events: none;
+  user-select: none;
 }
 
-/* Description text above the media */
-.media-description {
-  font-size: 60px;
-  text-align: center;
-  color: #000000;
-  margin-top: 20px;
+/* Content container */
+.media-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
   z-index: 1;
+  text-align: center;
 }
 
-/* Media wrapper with responsive width and aspect ratio */
-.media-wrapper {
-  width: 80%;
-  max-width: 1200px;
-  aspect-ratio: 16 / 9; /* maintain 16:9 ratio */
-  margin: 50px auto;
-  background: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-  border-radius: 20px;
-  box-sizing: border-box;
-  padding: 12px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), inset 0 0 10px #111;
+/* Title and subtitle */
+.media-title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
-/* Frame around the media screen */
-.media-frame {
+.media-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  color: #b0d7de;
+}
+
+/* Video container with nice frame */
+.video-container {
   position: relative;
   width: 100%;
-  height: 100%; /* follow aspect ratio height */
-  background: #333;
-  border: 12px solid #555;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), inset 0 0 10px #111;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-/* The actual media screen (YouTube iframe container) */
-.media-screen {
-  width: 85%;
-  height: 75%;
-  background: black;
-  border: 6px inset #000;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: inset 0 0 12px rgba(0, 255, 255, 0.3);
-  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3),
+    inset 0 0 15px rgba(0, 188, 212, 0.2);
+  background-color: #111;
+  margin-bottom: 2rem;
 }
 
-/* YouTube iframe fills the screen */
-.media-screen iframe {
+/* YouTube iframe wrapper fills container */
+.youtube-iframe-wrapper iframe,
+.youtube-iframe-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 16px;
 }
 
-/* Knobs container */
-.media-knobs {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  display: flex;
-  gap: 15px;
+/* Play/pause toggle button */
+.btn-play-toggle {
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  border: 2px solid var(--btn-color);
+  padding: 0.75rem 2rem;
+  font-size: 1.2rem;
+  border-radius: var(--btn-border-radius);
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
 }
 
-/* Knob base styles */
-.media-knob,
-.media-knob-small {
-  background: radial-gradient(circle, #666 0%, #222 100%);
-  border-radius: 50%;
-  border: 3px solid #111;
-  box-shadow: inset 0 0 5px #000;
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+.btn-play-toggle:hover,
+.btn-play-toggle:focus {
+  background-color: var(--btn-hover-bg);
+  outline: none;
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 8px var(--btn-color);
 }
 
-/* Large knob */
-.media-knob {
-  width: 60px;
-  height: 60px;
-}
-
-/* Small knob */
-.media-knob-small {
-  width: 25px;
-  height: 25px;
-}
-
-/* Knob ON state glowing animation */
-.media-knob.on {
-  background: radial-gradient(circle at center, #6aff6a 0%, #2bb32b 70%);
-  box-shadow: 0 0 12px #6aff6a, inset 0 0 10px #2bb32b, 0 0 20px #2bb32b;
-  animation: flicker 1.5s infinite alternate;
-}
-
-.media-knob-small.on {
-  background: radial-gradient(circle at center, #6aff6a 0%, #2bb32b 70%);
-  box-shadow: 0 0 8px #6aff6a, inset 0 0 6px #2bb32b;
-  animation: flicker 1.5s infinite alternate;
-}
-
-/* Static scan lines effect overlay */
-.media-screen::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.03) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-}
-
-.fullscreen-btn {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  border: none;
-  color: white;
-  padding: 6px 10px;
-  font-size: 18px;
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 10;
-  transition: background 0.3s ease;
-}
-
-.fullscreen-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-
-  /* Flicker animation */
-  @keyframes flicker {
-    0% {
-      opacity: 0.85;
-    }
-    100% {
-      opacity: 1;
-    }
+/* Responsive typography */
+@media (max-width: 768px) {
+  .media-title {
+    font-size: 2.25rem;
   }
 
-  /* Media Queries */
-
-  /* Tablets and smaller laptops */
-  @media screen and (max-width: 1024px) {
-    .media-wrapper {
-      width: 90%;
-      margin: 30px auto;
-    }
-
-    .media-description {
-      font-size: 40px;
-    }
+  .media-subtitle {
+    font-size: 1rem;
   }
 
-  /* Tablets and large phones */
-  @media screen and (max-width: 768px) {
-    .media-wrapper {
-      width: 95%;
-      margin: 20px auto;
-      padding: 8px;
-    }
+  .btn-play-toggle {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
 
-    .media-description {
-      font-size: 30px;
-      margin-top: 15px;
-    }
-
-    .media-screen {
-      width: 90%;
-      height: 70%;
-    }
+@media (max-width: 480px) {
+  .media-title {
+    font-size: 1.8rem;
   }
 
-  /* Phones */
-  @media screen and (max-width: 480px) {
-    .media-wrapper {
-      width: 100%;
-      margin: 15px auto;
-      padding: 6px;
-      border-width: 8px;
-    }
+  .media-subtitle {
+    font-size: 0.9rem;
+  }
 
-    .media-description {
-      font-size: 22px;
-      margin-top: 10px;
-    }
-
-    .media-screen {
-      width: 95%;
-      height: 65%;
-    }
-
-    .media-knob {
-      width: 40px;
-      height: 40px;
-    }
-
-    .media-knob-small {
-      width: 18px;
-      height: 18px;
-    }
-
-    /* Adjust knobs position to avoid overflow on small screens */
-    .media-knobs {
-      bottom: 15px;
-      right: 15px;
-    }
+  .btn-play-toggle {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
   }
 }

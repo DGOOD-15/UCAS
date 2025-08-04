@@ -22,8 +22,8 @@
   height: auto;
   display: block;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.5) brightness(0.9) sepia(1) hue-rotate(75deg)
-    saturate(5);
+  filter: grayscale(0.5) contrast(1) brightness(0.9) sepia(0.7)
+    hue-rotate(75deg) saturate(3);
   box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 20px;

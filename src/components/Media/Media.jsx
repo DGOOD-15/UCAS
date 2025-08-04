@@ -5,13 +5,7 @@ import staticBG from "../../assets/static.mp4";
 function Media() {
   const playerRef = useRef(null);
   const ytPlayerInstance = useRef(null);
-  const mediaFrameRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(
-    navigator.userAgent
-  );
 
   useEffect(() => {
     if (window.YT && window.YT.Player) {
@@ -40,8 +34,8 @@ function Media() {
         playerVars: {
           modestbranding: 1,
           rel: 0,
-          showinfo: 0,
-          fs: 1, // Show YouTube fullscreen button
+          controls: 0, // Hide default controls
+          fs: 1,
         },
       });
     }
@@ -61,12 +55,10 @@ function Media() {
   };
 
   const togglePlay = () => {
+    if (!ytPlayerInstance.current) return;
     const player = ytPlayerInstance.current;
-    if (!player) return;
-
     const YT = window.YT;
     const state = player.getPlayerState();
-
     if (state === YT.PlayerState.PLAYING) {
       player.pauseVideo();
     } else {
@@ -74,66 +66,49 @@ function Media() {
     }
   };
 
-  const toggleFullScreen = () => {
-    const element = mediaFrameRef.current;
-    if (!document.fullscreenElement) {
-      element.requestFullscreen().catch((err) => {
-        console.error("Fullscreen error:", err);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  };
-
   return (
-    <div className="main__media-container">
-      <video autoPlay loop muted playsInline className="tv-static-bg">
-        <source src={staticBG} type="video/webm" />
+    <section className="media-section" aria-label="Music video player section">
+      {/* Background static video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="media-background"
+        aria-hidden="true"
+      >
+        <source src={staticBG} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      <div className="main__media-content">
-        <p className="media-description">
-          New music coming soon! While you wait check out our latest music
-          video!
+      <div className="media-content">
+        <h1 className="media-title">New Music Coming Soon</h1>
+        <p className="media-subtitle">
+          While you wait, check out our latest music video!
         </p>
 
-        <div className="media-wrapper">
-          <div className="media-frame" ref={mediaFrameRef}>
-            <div className="media-screen">
-              <div
-                id="youtube-player"
-                ref={playerRef}
-                style={{ width: "100%", height: "100%" }}
-              />
-            </div>
-
-            <div
-              className="media-knobs"
-              onClick={togglePlay}
-              style={{ cursor: "pointer" }}
-              aria-label={isPlaying ? "Pause video" : "Play video"}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && togglePlay()}
-            >
-              <div className={`media-knob ${isPlaying ? "on" : ""}`}></div>
-            </div>
-
-            {/* ✅ Show custom fullscreen only on mobile & not iOS */}
-            {isMobile && !isIOS && (
-              <button
-                className="fullscreen-btn"
-                onClick={toggleFullScreen}
-                title="Toggle Fullscreen"
-              >
-                ⛶
-              </button>
-            )}
-          </div>
+        <div
+          className="video-container"
+          role="region"
+          aria-label="YouTube music video player"
+        >
+          <div
+            id="youtube-player"
+            ref={playerRef}
+            className="youtube-iframe-wrapper"
+          />
         </div>
+
+        <button
+          className="btn-play-toggle"
+          onClick={togglePlay}
+          aria-pressed={isPlaying}
+          aria-label={isPlaying ? "Pause video" : "Play video"}
+        >
+          {isPlaying ? "Pause ▶" : "Play ►"}
+        </button>
       </div>
-    </div>
+    </section>
   );
 }
 
