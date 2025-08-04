@@ -25,7 +25,7 @@ function About() {
       instagram: "https://www.instagram.com/johnny_clouds10/",
     },
   ];
-  console.log(AJ);
+
   return (
     <section className="about">
       <h2 className="about__title">About the band</h2>
