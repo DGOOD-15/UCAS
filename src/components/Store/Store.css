@@ -8,7 +8,9 @@
 
 .store__title {
   color: #39ff14;
-  text-shadow: 0 0 8px #39ff14, 0 0 16px #39ff14;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14;
   font-size: 60px;
   font-family: "Share Tech Mono", monospace;
 }
