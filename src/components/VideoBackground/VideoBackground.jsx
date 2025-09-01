@@ -34,14 +34,14 @@ export default function VideoBackground() {
   };
 
   return (
-    <div className="video-background" >
+    <div className="video-background">
       {!showImage && (
         <video
           ref={videoRef}
           autoPlay
           playsInline
           muted={isMuted}
-          style={{ width: "100%", height: "100%", objectFit: "contain", position: "absolute", top: 0, left: 0 }}
+          style={{ width: "100%", height: "auto", objectFit: "contain", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
         >
           <source src={videoBG} type="video/mp4" />
         </video>
@@ -53,17 +53,17 @@ export default function VideoBackground() {
           alt="Slippin' On 7 Coming 9/17/25"
           style={{
             width: "100%",
-            height: "100vh",
+            height: "auto",
             objectFit: "contain",
             position: "absolute",
-            top: 0,
-            left: 0,
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             opacity: showImage ? 1 : 0,
             transition: "opacity 1.5s ease-in-out",
           }}
         />
       )}
-
     </div>
   );
 }
