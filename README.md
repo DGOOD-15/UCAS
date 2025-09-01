@@ -1,8 +1,25 @@
-# React + Vite
+# Band Website  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based website for a band, featuring a splash screen, homepage, about section, media gallery, and a store (coming soon).  
 
-Currently, two official plugins are available:
+## Features  
+- **Splash Screen** with enter button.  
+- **Homepage** with navigation to site sections.  
+- **About Page** with band details.  
+- **Media Page** for photos/videos.  
+- **Store Page** placeholder for future merch.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack  
+- React  
+- React Router  
+- Vite  
+
+
+## Roadmap
+
+- Implement store functionality with checkout.
+- Expand media section with music/video embeds.
+- Add animations and transitions for smoother UX.
+
+
+
