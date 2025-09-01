@@ -64,12 +64,6 @@ export default function VideoBackground() {
         />
       )}
 
-      <button
-        onClick={toggleMute}
-        style={{ position: "absolute", bottom: "20px", left: "20px", zIndex: 10 }}
-      >
-        {isMuted ? "🔇 Unmute" : "🔊 Mute"}
-      </button>
     </div>
   );
 }
