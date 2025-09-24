@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "../Media/Media.css"; 
+import "../Media/Media.css";
 
 function YouTubePlayer({ videoId, playerId }) {
   const playerRef = useRef(null);
@@ -7,14 +7,41 @@ function YouTubePlayer({ videoId, playerId }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
+    const initializePlayer = () => {
+      if (playerRef.current && !ytPlayerInstance.current) {
+        ytPlayerInstance.current = new window.YT.Player(playerRef.current, {
+          videoId,
+          events: { onStateChange },
+          playerVars: {
+            modestbranding: 1,
+            rel: 0,
+            controls: 0,
+            fs: 1,
+          },
+        });
+      }
+    };
+
+    const onYouTubeAPIReady = () => {
+      if (window.youtubeAPIReadyCallbacks) {
+        window.youtubeAPIReadyCallbacks.forEach((cb) => cb());
+        window.youtubeAPIReadyCallbacks = [];
+      }
+    };
+
     if (window.YT && window.YT.Player) {
       initializePlayer();
     } else {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      tag.async = true;
-      document.body.appendChild(tag);
-      window.onYouTubeIframeAPIReady = initializePlayer;
+      if (!window.youtubeAPIReadyCallbacks) {
+        window.youtubeAPIReadyCallbacks = [];
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        tag.async = true;
+        document.body.appendChild(tag);
+
+        window.onYouTubeIframeAPIReady = onYouTubeAPIReady;
+      }
+      window.youtubeAPIReadyCallbacks.push(initializePlayer);
     }
 
     return () => {
@@ -23,22 +50,7 @@ function YouTubePlayer({ videoId, playerId }) {
         ytPlayerInstance.current = null;
       }
     };
-  }, []);
-
-  const initializePlayer = () => {
-    if (playerRef.current && !ytPlayerInstance.current) {
-      ytPlayerInstance.current = new window.YT.Player(playerRef.current, {
-        videoId,
-        events: { onStateChange },
-        playerVars: {
-          modestbranding: 1,
-          rel: 0,
-          controls: 0,
-          fs: 1,
-        },
-      });
-    }
-  };
+  }, [videoId]);
 
   const onStateChange = (event) => {
     const YT = window.YT;
@@ -71,11 +83,7 @@ function YouTubePlayer({ videoId, playerId }) {
       role="region"
       aria-label="YouTube music video player"
     >
-      <div
-        id={playerId}
-        ref={playerRef}
-        className="youtube-iframe-wrapper"
-      />
+      <div id={playerId} ref={playerRef} className="youtube-iframe-wrapper" />
       <button
         className="btn-play-toggle"
         onClick={togglePlay}
