@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import slippinBG from "../../assets/slippinBG.jpg";
+import slippinBG from "../../assets/slippin_bg.jpg";
 import videoBG from "../../assets/SLIPPIN-ON-7-NEW-PROMO-2.mp4";
 
 export default function VideoBackground() {
@@ -41,7 +41,7 @@ export default function VideoBackground() {
           autoPlay
           playsInline
           muted={isMuted}
-          style={{ width: "100%", height: "auto", objectFit: "contain", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+          style={{ width: "100%", height: "auto", objectFit: "contain", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: "-1" }}
         >
           <source src={videoBG} type="video/mp4" />
         </video>
@@ -53,7 +53,7 @@ export default function VideoBackground() {
           alt="Slippin' On 7 Coming 9/17/25"
           style={{
             width: "100%",
-            height: "auto",
+            height: "100%",
             objectFit: "contain",
             position: "absolute",
             top: "50%",
@@ -61,6 +61,7 @@ export default function VideoBackground() {
             transform: "translate(-50%, -50%)",
             opacity: showImage ? 1 : 0,
             transition: "opacity 1.5s ease-in-out",
+            zIndex: "-1",
           }}
         />
       )}
