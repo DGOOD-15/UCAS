@@ -32,6 +32,12 @@ function About() {
       <p className="about__description">
         Three Piece Rock Trio from Western Kentucky. EST 2013
       </p>
+      <p className="about__booking"> For Booking contact <a href="mailto:ucasband@gmail.com">undercloudsandsurveillance@gmail.com</a> 
+      <br />
+      or call 
+      <br />
+       270-498-8792</p>
+       
       <div className="about__member-cards-container">
         {bandMembers.map((member) => (
           <BandMemberCard key={member.name} {...member} />
