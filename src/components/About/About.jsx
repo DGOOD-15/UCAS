@@ -36,7 +36,7 @@ function About() {
       <br />
       or call 
       <br />
-       270-498-8792</p>
+       270-498-8752</p>
        
       <div className="about__member-cards-container">
         {bandMembers.map((member) => (
