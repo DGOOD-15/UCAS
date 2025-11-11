@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import slippinBG from "../../assets/slippin_bg.jpg";
-import videoBG from "../../assets/SLIPPIN-ON-7-NEW-PROMO-2.mp4";
+import slippinBG from "../../assets/NFSIC-BG.jpg";
+import videoBG from "../../assets/NFSIC.mp4";
 
 export default function VideoBackground() {
   const videoRef = useRef(null);
