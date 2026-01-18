@@ -19,12 +19,13 @@ function Media() {
       </video>
 
       <div className="media-content">
-        <h1 className="media-title">New Music Video "Not For Sale In California" Out Now!</h1>
-        <YouTubePlayer videoId="9Q6OPoBPYpM" playerId="youtube-player-1" />
+        <h1 className="media-title">New Music Video "Halo Stain" Out Now!</h1>
+        <YouTubePlayer videoId="SshBZnL8d-Y" playerId="youtube-player-1" />
+        <YouTubePlayer videoId="9Q6OPoBPYpM" playerId="youtube-player-2" />
         <p className="media-subtitle">Watch our other music video "Slippin on 7" below.</p>
-        <YouTubePlayer videoId="nTTfOvAGMew" playerId="youtube-player-2" />
+        <YouTubePlayer videoId="nTTfOvAGMew" playerId="youtube-player-3" />
         <p className="media-subtitle">Watch our other music video "Blue House" below.</p>
-        <YouTubePlayer videoId="puzvgHlI0iQ" playerId="youtube-player-3" />
+        <YouTubePlayer videoId="puzvgHlI0iQ" playerId="youtube-player-4" />
       </div>
     </section>
   );
