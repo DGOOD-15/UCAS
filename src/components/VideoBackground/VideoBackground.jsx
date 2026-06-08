@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import slippinBG from "../../assets/NFSIC-BG.jpg";
-import videoBG from "../../assets/NFSIC.mp4";
+import slippinBG from "../../assets/mrbg.png";
+import videoBG from "../../assets/mr.mp4";
 
 export default function VideoBackground() {
   const videoRef = useRef(null);
@@ -41,7 +41,16 @@ export default function VideoBackground() {
           autoPlay
           playsInline
           muted={isMuted}
-          style={{ width: "100%", height: "auto", objectFit: "contain", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: "-1" }}
+          style={{
+            width: "100%",
+            height: "auto",
+            objectFit: "contain",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: "-1",
+          }}
         >
           <source src={videoBG} type="video/mp4" />
         </video>
